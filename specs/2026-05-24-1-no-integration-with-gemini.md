@@ -73,6 +73,9 @@ Server-side route handler using Next.js App Router conventions:
   - `429` if rate-limited.
   - `400` if the model ID is invalid.
   - `500` for unexpected errors.
+- Validate the request body — reject empty `message` with 400, reject unknown `model` values against the config map with 400, and verify `Content-Type: application/json`.
+
+> **Note:** Each API call is stateless — only the current `message` is sent to Gemini. The UI maintains the message list locally for display but does not send conversation history to the API.
 
 ### 4. Chat UI (`src/components/ChatPanel.tsx`)
 
